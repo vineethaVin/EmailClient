@@ -36,15 +36,15 @@ export default class MailDisplay extends React.Component {
     var data = [];
     if (value === "Inbox") {
       data = require('./../json/inbox');
-      this.props.handleMailList(data);
+      this.props.handleMailList(data,value);
     }
     else if (value === "spam") {
       data = require('./../json/spam');
-      this.props.handleMailList(data);
+      this.props.handleMailList(data,value);
     }
     else {
       data = [];
-      this.props.handleMailList(data);
+      this.props.handleMailList(data,value);
     }
   }
   render() {
@@ -94,7 +94,7 @@ export default class MailDisplay extends React.Component {
               <ListItemText primary="Sent mail" />
             </ListItem>
             <Divider light />
-            <ListItem button style={nested} onClick={() => this.handleListClick("")}>
+            <ListItem button style={nested} onClick={() => this.handleListClick("Delete Items")}>
               <ListItemIcon>
                 <DeleteIcon />
               </ListItemIcon>

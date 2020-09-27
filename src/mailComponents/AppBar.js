@@ -29,15 +29,21 @@ export default class AppBarClass extends React.Component {
       mailList: [],
       openMailList: false,
       openMail: false,
-      mailContent: ""
+      mailContent: "",
+      deletedList:[]
     };
   }
 
   handleClick = () => {
     this.setState({ open: !this.state.open });
   }
-  handleMailList = (value) => {
-    this.setState({ mailList: value, openMailList: true, openMail: false });
+  handleMailList = (data,value) => {
+    if(value=== "Delete Items"){
+      this.setState({ mailList: this.state.deletedList, openMailList: true, openMail: false });
+    }
+    else{
+    this.setState({ mailList: data, openMailList: true, openMail: false });
+    }
   }
   handleMailOnClick = (value) => {
     //Mark the mail content as read 
@@ -49,10 +55,12 @@ export default class AppBarClass extends React.Component {
   }
   handleDeleteMail = (value) => {
     // delete the mail content
+   var deletedList=[];
     var mailDataList = this.state.mailList.filter(function (data) {
       return data.mId !== value.mId;
     });
-    this.setState({ mailList: mailDataList, openMail: false });
+    deletedList.push(value);
+    this.setState({ mailList: mailDataList, openMail: false,deletedList });
   }
   render() {
     let unreadCount = [];
@@ -95,6 +103,7 @@ export default class AppBarClass extends React.Component {
               </Grid>
               <Grid item xs={2}>
                 {/**Tag contain the  mail list for the folder */
+              
                 this.state.openMailList ?
                   <MailList mailList={this.state.mailList} handleMailOnClick={this.handleMailOnClick} />
                   : ""}
