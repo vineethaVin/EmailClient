@@ -27,9 +27,9 @@ export default class MailList extends React.Component {
             <React.Fragment  key={key}>
               <ListItem  button onClick={() => this.handleClick(data)}>
                 <ListItemText >
-                  <Typography style={{ overflow: 'hidden', textOverflow: 'ellipsis', marginTop: '2%' ,fontWeight: data.unread ? 'bold' : '400'}}>{data.mId}</Typography>
-                  <Typography style={{ overflow: 'hidden', textOverflow: 'ellipsis', marginTop: '2%',fontWeight: data.unread ? 'bold' : '400' }}>{data.subject}</Typography>
-                  <Typography style={{ height: '50px', overflow: 'hidden', textOverflow: 'ellipsis', marginTop: '2%',fontWeight: data.unread ? 'bold' : '400' }}>{data.content}</Typography>
+                  <Typography style={{ overflow: 'hidden', textOverflow: 'ellipsis', marginTop: '2%' ,fontWeight: data.unread ? 'bold' : '400'}} dangerouslySetInnerHTML={{ __html: data.mId }}/>
+                  <Typography style={{ overflow: 'hidden', textOverflow: 'ellipsis', marginTop: '2%',fontWeight: data.unread ? 'bold' : '400' }} dangerouslySetInnerHTML={{ __html: data.subject}}/>
+                  <Typography style={{ height: '50px', overflow: 'hidden', textOverflow: 'ellipsis', marginTop: '2%',fontWeight: data.unread ? 'bold' : '400' }} dangerouslySetInnerHTML={{ __html: data.content}}/>
                 </ListItemText>
               </ListItem>
               <Divider light />

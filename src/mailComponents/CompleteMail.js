@@ -23,17 +23,11 @@ export default class CompleteMail extends React.Component {
         var data = this.props.mailContent;
         return (
             <div>
-                <Typography style={{ textAlign: 'left' }}>
-                    {data.subject}
-                </Typography>
+                <Typography style={{ textAlign: 'left' }} dangerouslySetInnerHTML={{ __html: data.subject}}/>
                 <Card variant="outlined">
                     <CardContent>
-                        <Typography style={{ textAlign: 'left' }}>
-                            {data.mId}
-                        </Typography>
-                        <Typography style={{ textAlign: 'left' }}>
-                            {data.content}
-                        </Typography>
+                        <Typography style={{ textAlign: 'left' }} dangerouslySetInnerHTML={{ __html: data.mId}}/>
+                        <Typography style={{ textAlign: 'left' }} dangerouslySetInnerHTML={{ __html: data.content}}/>
                     </CardContent>
                     <CardActions>
                         <ButtonGroup variant="text" color="primary">
